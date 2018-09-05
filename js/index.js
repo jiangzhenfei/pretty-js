@@ -92,5 +92,6 @@ var Max = Math.max.apply( window,MaxArr)
 console.log(Max)
 
 /**
- * 
+ * 手动实现 bind方法，主要原理，具体细节没写
  */
+
