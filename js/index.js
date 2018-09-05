@@ -94,4 +94,22 @@ console.log(Max)
 /**
  * 手动实现 bind方法，主要原理，具体细节没写
  */
+Function.prototype.bind = function( context ){
+    return function( ){
+        this.apply( context,arguments)
+    }
+}
+
+/**
+ * slice 的妙用
+ * 可以将类数组转成数组
+ */
+var likeArr = {
+    '0':'fei',
+    '1':20,
+    '2':'so easy',
+    length:3
+}
+var realArr = [].slice.call( likeArr )
+console.log( realArr )//["fei", 20, "so easy"]
 
