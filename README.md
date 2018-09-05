@@ -65,6 +65,14 @@ var MaxArr = [1,2,3,6,5,9,4,6,8]
 var Max = Math.max.apply( window,MaxArr)
 console.log(Max)
 ```
+### 手动实现 bind方法，主要原理，具体细节没写
+```js
+Function.prototype.bind = function( context ){
+    return function( ){
+        this.apply( context,arguments)
+    }
+}
+```
 
 
 
