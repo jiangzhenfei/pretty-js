@@ -65,6 +65,35 @@ var MaxArr = [1,2,3,6,5,9,4,6,8]
 var Max = Math.max.apply( window,MaxArr)
 console.log(Max)
 ```
+### 手动实现 bind方法，主要原理，具体细节没写
+```js
+Function.prototype.bind = function( context ){
+    return function( ){
+        this.apply( context,arguments)
+    }
+}
+```
+### slice 的妙用,可以将类数组转成数组以及引发的思考
+```js
+var likeArr = {
+    '0':'fei',
+    '1':20,
+    '2':'so easy',
+    length:3
+}
+var realArr = [].slice.call( likeArr )
+console.log( realArr )//["fei", 20, "so easy"]
+```
+请思考下列问题
+```js
+var likeArr = {
+    '0':'fei',
+    '2':'so easy',
+    length:3
+}
+var realArr = [].slice.call( likeArr )
+console.log( realArr )//打印啥，相信你已经知道slice怎么实现了
+```
 
 
 
