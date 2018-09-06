@@ -113,3 +113,16 @@ var likeArr = {
 var realArr = [].slice.call( likeArr )
 console.log( realArr )//["fei", 20, "so easy"]
 
+
+/**
+ * 箭头函数的深入理解
+ */
+var name = 'fei'
+function People(name){
+    this.name = name
+}
+People.prototype.say =()=>{
+    console.log(this.name)
+}
+var p = new People('jiao')
+p.say()//打印是啥
