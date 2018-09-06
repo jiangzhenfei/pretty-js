@@ -94,6 +94,31 @@ var likeArr = {
 var realArr = [].slice.call( likeArr )
 console.log( realArr )//打印啥，相信你已经知道slice怎么实现了
 ```
+### 箭头函数深入理解
+```js
+var name = 'fei'
+function People(name){
+    this.name = name
+}
+People.prototype.say =()=>{
+    console.log(this.name)
+}
+var p = new People('jiao')
+p.say()//打印是啥 答案是fei
+```
+要想知道箭头函数具体指向谁只要
+```js
+var name = 'fei'
+function People(name){
+    this.name = name
+}
+var _self = this;
+People.prototype.say =()=>{
+    console.log(_self.name)
+}
+var p = new People('jiao')
+p.say()//打印是啥
+```
 
 
 
