@@ -133,7 +133,7 @@ p.say()//打印是啥
  * 为了简便值考虑resolve
  */
 
- function Promise(){
+function Promise(){
     var state = 'pendding',//状态初始化
         value = null,//resolve时候的值将会保存在这里
         callbacks = []//resolve之后要执行的回调
@@ -170,15 +170,13 @@ p.say()//打印是啥
                 return;
             }
         }
-        state = 'fulfilled';
+        state = 'fulfilled';//状态修改
         value = newValue;
-        setTimeout(function () {
+        setTimeout(function () {//延迟执行所有的callbacks内部的函数，延迟执行的目的是resolve可能提前触发，但是回调还没注册
             callbacks.forEach(function (callback) {
                 handle(callback);
             });
         }, 0);
     }
-
     fn(resolve);
-
- }
+}
