@@ -180,3 +180,33 @@ function Promise(){
     }
     fn(resolve);
 }
+
+/**
+ * 如何将对象数组中某个值全部相加
+ * 如下数组想得出数组对象的cpu使用总和
+ */
+var addArr = [
+    {id:1,cpu:2},
+    {id:2,cpu:1},
+    {id:3,cpu:5},
+    {id:4,cpu:4}
+]
+//传统的方式
+function getCpuTotal(arr){
+    var sum = 0;
+    arr.forEach( (v)=>{
+        sum += v.cpu
+    } )
+    return sum;
+}
+console.log( getCpuTotal(addArr))
+//使用reduce
+function getCpuTotal2(pre,cur){
+    return pre + cur.cpu;
+}
+var t = addArr.reduce( getCpuTotal2, 0 )
+console.log( t )
+//求下列数组总和
+var sumArr = [1,2,6,7,3,2,45,6,4]
+var s = sumArr.reduce( ( pre, cur )=> pre + cur )
+console.log( s )
