@@ -48,7 +48,7 @@ function extend( _newObj, obj ){
     return _newObj;
 }
 ```
-### 一行代码拷贝数组(在很多框架都是这么实现的)
+### 一行代码拷贝数组(在很多框架都是这么实现的,只是针对内部为基本类型的数组)
 ```js
 var beCopyArr = [1,2,3,4,5]
 var newCopyArr = beCopyArr.slice()
