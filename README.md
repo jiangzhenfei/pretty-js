@@ -119,7 +119,7 @@ People.prototype.say =()=>{
 var p = new People('jiao')
 p.say()//打印是啥
 ```
-### Promise简易实现 为了简便值考虑resolve
+### Promise简易实现 为了简便只是考虑resolve
 ```js
 function Promise(){
     var state = 'pendding',//状态初始化
