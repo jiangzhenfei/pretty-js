@@ -201,6 +201,14 @@ function getCpuTotal2(pre,cur){
 var t = addArr.reduce( getCpuTotal2, 0 )
 console.log( t )
 ```
+### 优雅的for循环
+```js
+let arr = [1,2,3,4];
+let i = arr.length - 1;
+while( i-- ){
+    console.log( arr[ i ] )
+}
+```
 
 
 
