@@ -121,7 +121,7 @@ p.say()//打印是啥
 ```
 ### Promise简易实现 为了简便只是考虑resolve
 ```js
-function Promise(){
+function Promise( fn ){
     var state = 'pendding',//状态初始化
         value = null,//resolve时候的值将会保存在这里
         callbacks = []//resolve之后要执行的回调
