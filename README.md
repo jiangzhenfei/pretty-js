@@ -204,7 +204,7 @@ console.log( t )
 ### 优雅的for循环
 ```js
 let arr = [1,2,3,4];
-let i = arr.length - 1;
+let i = arr.length;
 while( i-- ){
     console.log( arr[ i ] )
 }
