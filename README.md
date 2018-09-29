@@ -209,7 +209,21 @@ while( i-- ){
     console.log( arr[ i ] )
 }
 ```
+### 实现继承
+```js
+function Animal( name ) {
+    this.name = name
+}
+Animal.prototype.say = function(){
+    console.log(this.name)
+}
 
+function Dog( ){
+    Animal.apply(this,arguments)
+}
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+```
 
 
 
