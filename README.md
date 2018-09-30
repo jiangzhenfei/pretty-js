@@ -22,6 +22,7 @@ Object.keys( obj2 ).forEach( ( key )=>{
     console.log( obj2[ key ] )
 } )
 ```
+其他的iterable数据可以使用es6的let of
 ### 对象深拷贝
 ```js
 function extend( _newObj, obj ){
