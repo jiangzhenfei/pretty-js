@@ -275,7 +275,15 @@ Date.prototype.pattern=function(fmt) {
 var date = new Date(); 
 console.log(date.pattern("yyyy-MM-dd EEE hh:mm:ss")); 
 ```
-
+### 删除p标签的空标签或者只含有<br/>标签的
+```js
+// 删除空白空格，标签[\s\r\n]表示换行，空格，回车字符
+function removeEmpty( str ){
+    var regx = /<p\s*>[\s\r\n]*<br\/>[\s\r\n]*<\/p>/ig;
+    var resolveStr = str.replace(regx,"");
+    return resolveStr;
+}
+```
 
 
 
