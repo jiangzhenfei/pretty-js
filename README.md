@@ -336,7 +336,8 @@ var scrollCallBack = function(elements, callback){
     }
     
     window.addEventListener('scroll',()=>{
-        resolve()
+        // 保持和浏览器刷新频率一致，减少滚动的方法的过度触发
+        requestAnimationFrame(resolve);
     })
 }
 //在页面中使用
