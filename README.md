@@ -350,7 +350,36 @@ scrollCallBack([
     // index 代表是该元素在数组中的下标
 })
 ```
+### IntersectionObserver实现的图片懒加载，兼容性不好，在手机端低版本的安卓不兼容
+```js
+lazyLoad = function ( element ) {
+    const io = new IntersectionObserver(callback)// 实例化 默认基于当前视窗})  
 
+    // 将图片的真实url设置为data-src src属性为占位图 元素可见时候替换src
+
+    function callback(entries){  
+        entries.forEach((item) => { // 遍历entries数组
+            if(item.isIntersecting){ // 当前元素可见
+                item.target.src = item.target.dataset.src + '?imageView2/0/w/200/h/200'  // 替换src
+                io.unobserve(item.target)  // 停止观察当前元素 避免不可见时候再次调用callback函数
+            }   
+        })
+        }
+    setTimeout(()=>{
+        let imgs = document.querySelectorAll( element )
+        imgs.forEach((item)=>{  // io.observe接受一个DOM元素，添加多个监听 使用forEach
+            io.observe(item)
+        })
+    },200)
+}
+```
+```html
+<img :data-src="item.logoUrl" class="text" v-for="item in data"/>
+```
+```js
+// 在页面中使用,在数据返回后并且最好在nextTick中执行，应为此时是可以拿到dom元素了
+lazyLoad("[data-src]");
+```
 
 
 
