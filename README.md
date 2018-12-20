@@ -284,6 +284,71 @@ function removeEmpty( str ){
     return resolveStr;
 }
 ```
+### 监听页面滚动跳滚动到某些元素时候触发的想要的函数，变滚动，页面的tab不断切换
+```js
+/**
+ * 
+ * @param {需要监听的元素选择器} elements 
+ * @param {处理每个符合条件的元素下标} callback 
+ */
+var scrollCallBack = function(elements, callback){
+    if( !Array.isArray( elements ) ) {
+        throw "elements needs Array";
+    }
+    //获取所以真实dom
+    let domArr = elements.map( (v) =>{
+        return document.querySelector(v)
+    })
+    var installDom = null;
+    var resolve = function(){
+        if( domArr[0] && domArr[0].getBoundingClientRect().top > 0 ){
+            callback( 0 )
+            installDom = 0;
+            return;
+        }
+        for( var i = 0; i < domArr.length; i++ ){
+            let dom = domArr[ i ];
+            let nextDom = domArr[ i + 1 ];
+            let domTop = dom.getBoundingClientRect().top;
+            /* 假设存在下一个元素，当前<0,下一个大于0 */
+            if( nextDom ){ 
+                let nextDomTop = nextDom.getBoundingClientRect().top;
+                if( domTop <= 0 && nextDomTop > 0) {
+                    if( installDom === i ){ //滚动过程中符合条件的元素没变则直接退出函数
+                        return;
+                    }
+                    callback( i )
+                    installDom = i;
+                    break;
+                } 
+            }else{ /* 不假设存在下一个元素，当前元素<0 */
+                if( domTop <= 0 ){
+                    if( installDom === i ){ //滚动过程中符合条件的元素没变则直接退出函数
+                        return;
+                    }
+                    callback( i )
+                    installDom = i;
+                    break;
+                }
+                
+            }
+        }
+    }
+    
+    window.addEventListener('scroll',()=>{
+        resolve()
+    })
+}
+//在页面中使用
+scrollCallBack([
+    '#goods-item0',
+    '#goods-item1',
+    '#goods-item2',
+    '#goods-item3'
+], index => {
+    // index 代表是该元素在数组中的下标
+})
+```
 
 
 
