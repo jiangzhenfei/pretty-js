@@ -54,6 +54,10 @@ function extend( _newObj, obj ){
 var beCopyArr = [1,2,3,4,5]
 var newCopyArr = beCopyArr.slice()
 ```
+### 数组去重
+```js
+uniq = function(array){ return filter.call(array, function(item, idx){ return array.indexOf(item) == idx }) }
+```
 ### 判断对象是不是简单对象，即直接继承Object，自己定义的构造方法创建的对象则不是
 ```js
 var isPlaintObj = function( o ){
